@@ -17,3 +17,8 @@ sh ARCH='amd64' *COMMAND:
         -v $(pwd):$(pwd) \
         hermetic/{{ARCH}}:latest \
         {{COMMAND}}
+
+build: (sh 'amd64' 'just _compile')
+
+_compile:
+    gcc -o hello src/main.c -lncurses

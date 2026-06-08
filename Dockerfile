@@ -1,9 +1,20 @@
 FROM debian:13
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y \
+SHELL ["/bin/bash", "-euo", "pipefail", "-c"]
+
+ENV DEBIAN_FRONTEND=noninteractive
+RUN <<DEPS
+apt-get update
+apt-get install -y --no-install-recommends \
+    ca-certificates \
     git \
     sudo \
-    && rm -rf /var/lib/apt/lists/*
+    build-essential \
+    curl \
+    ncurses-dev
+rm -rf /var/lib/apt/lists/*
+curl -fsSL https://just.systems/install.sh | bash -s -- --to /usr/local/bin
+DEPS
 
 # Configure sudo to work without password for any user ID
 RUN echo 'ALL ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
