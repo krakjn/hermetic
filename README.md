@@ -24,18 +24,4 @@ Using the `ncurses` lib to showcase how you can build and run in an isolated env
 1. `just sh` to enter the environment
 1. `./hello` to run the TUI
 
-
-### Notes
-> If you want to test out arm on amd then you need `qemu-user-static` (debian) or a similar package for your distro
-
-
-```
-hermetic on  main [!+] 
-❯ just sh 
-tony@docker:~/hermetic$ ls -l 
-total 12
--rw-rw-r-- 1 tony tony 1032 Oct 24 03:59 Dockerfile
--rw-rw-r-- 1 tony tony 1422 Oct 24 03:59 README.md
--rw-rw-r-- 1 tony tony  537 Oct 24 03:57 justfile
-tony@docker:~/hermetic$ 
-```
+![screenshot](screenshot.png)
